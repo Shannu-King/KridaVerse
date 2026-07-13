@@ -11,7 +11,7 @@ export function AnimatedBackground({ className = "" }: { className?: string }) {
       />
       <motion.div
         className="absolute -right-[10%] top-[20%] h-[45vw] w-[45vw] rounded-full opacity-15 blur-[120px]"
-        style={{ background: "var(--neon-crimson)" }}
+        style={{ background: "var(--neon-purple)" }}
         animate={{ x: [0, -50, 0], y: [0, 60, 0], scale: [1, 1.15, 1] }}
         transition={{ duration: 15, repeat: Infinity, ease: "easeInOut", delay: 2 }}
       />

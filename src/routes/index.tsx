@@ -43,7 +43,7 @@ function Index() {
           <source src="/sports_video.mp4" type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-black/50 to-[#0d0e15]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(110,168,255,0.25),transparent_50%),radial-gradient(circle_at_80%_70%,rgba(255,59,92,0.2),transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(110,168,255,0.25),transparent_50%),radial-gradient(circle_at_80%_70%,rgba(139,92,246,0.15),transparent_50%)]" />
 
         <div className="relative mx-auto max-w-6xl px-6 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}
@@ -118,7 +118,7 @@ function Index() {
         <div className="glass neon-border overflow-hidden rounded-3xl p-10 md:p-16">
           <div className="grid gap-8 md:grid-cols-2 md:items-center">
             <div>
-              <div className="text-xs uppercase tracking-widest text-[color:var(--neon-crimson)]">Ready to compete?</div>
+              <div className="text-xs uppercase tracking-widest text-[color:var(--neon-purple)]">Ready to compete?</div>
               <h3 className="mt-2 text-4xl font-bold tracking-tight md:text-5xl">Register your team in under two minutes.</h3>
               <p className="mt-4 text-white/60">Pick a sport, fill the roster, and lock your slot in the fixtures grid.</p>
               <div className="mt-6 flex gap-3">

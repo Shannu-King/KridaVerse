@@ -10,9 +10,9 @@ function BroadcastBanner() {
   if (!broadcasts.length) return null;
   const b = broadcasts[0];
   return (
-    <div className="sticky top-0 z-50 border-b border-[oklch(0.35_0.05_260/0.4)] bg-gradient-to-r from-[#6ea8ff22] via-[#ff3b5c22] to-[#35e6a422] backdrop-blur-xl">
+    <div className="sticky top-0 z-50 border-b border-[oklch(0.35_0.05_260/0.4)] bg-gradient-to-r from-[#6ea8ff22] via-[#8b5cf622] to-[#35e6a422] backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center gap-3 px-6 py-2 text-sm">
-        <Zap className="h-4 w-4 text-[color:var(--neon-crimson)] animate-pulse" />
+        <Zap className="h-4 w-4 text-[color:var(--neon-purple)] animate-pulse" />
         <span className="font-medium text-white/90">Broadcast:</span>
         <span className="text-white/80">{b.message}</span>
       </div>
@@ -31,7 +31,7 @@ function Header() {
     <header className="sticky top-0 z-40 border-b border-white/5 bg-[#0d0e15]/40 backdrop-blur-[12px]">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <Link to="/" className="group flex items-center gap-2">
-          <div className="relative flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-[#6ea8ff] via-[#ff3b5c] to-[#35e6a4] shadow-[0_0_24px_rgba(110,168,255,0.5)]">
+          <div className="relative flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-[#6ea8ff] via-[#8b5cf6] to-[#35e6a4] shadow-[0_0_24px_rgba(110,168,255,0.5)]">
             <span className="text-xl font-bold text-black">K</span>
           </div>
           <span className="text-2xl font-bold tracking-tight neon-text">KridaVerse</span>

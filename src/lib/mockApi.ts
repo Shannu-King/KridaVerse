@@ -7,7 +7,7 @@ export type Sport = "cricket" | "football" | "kabaddi" | "volleyball" | "basketb
 export const SPORT_META: Record<Sport, { label: string; min: number; max: number; color: string; emoji: string }> = {
   cricket:    { label: "Cricket",    min: 11, max: 15, color: "#6ea8ff", emoji: "🏏" },
   football:   { label: "Football",   min: 7,  max: 16, color: "#35e6a4", emoji: "⚽" },
-  kabaddi:    { label: "Kabaddi",    min: 7,  max: 12, color: "#ff3b5c", emoji: "🤼" },
+  kabaddi:    { label: "Kabaddi",    min: 7,  max: 12, color: "#f43f5e", emoji: "🤼" },
   volleyball: { label: "Volleyball", min: 6,  max: 12, color: "#f5c451", emoji: "🏐" },
   basketball: { label: "Basketball", min: 5,  max: 10, color: "#ff8a4c", emoji: "🏀" },
   hockey:     { label: "Hockey",     min: 11, max: 16, color: "#c084fc", emoji: "🏑" },

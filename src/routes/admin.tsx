@@ -34,7 +34,7 @@ function AdminPage() {
   if (!user?.isAdmin) {
     return (
       <div className="mx-auto max-w-md px-6 py-24 text-center">
-        <ShieldCheck className="mx-auto h-12 w-12 text-[color:var(--neon-crimson)]" />
+        <ShieldCheck className="mx-auto h-12 w-12 text-[color:var(--neon-purple)]" />
         <h1 className="mt-4 text-2xl font-bold">Admin Access Required</h1>
         <p className="mt-2 text-white/60">Sign in with an admin account (email containing "admin") to open the command center.</p>
         <Link to="/auth" className="btn-neon mt-6 inline-block rounded-xl px-6 py-3 font-semibold">Sign in</Link>
@@ -47,7 +47,7 @@ function AdminPage() {
       <div className="sticky top-0 z-30 border-b border-white/5 bg-[#0d0e15]/70 backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
           <Link to="/" className="inline-flex items-center gap-2 text-sm text-white/60 hover:text-white"><ArrowLeft className="h-4 w-4" /> Home</Link>
-          <div className="flex items-center gap-2 text-sm"><ShieldCheck className="h-4 w-4 text-[color:var(--neon-crimson)]" /><span className="font-medium">Admin Command Center</span></div>
+          <div className="flex items-center gap-2 text-sm"><ShieldCheck className="h-4 w-4 text-[color:var(--neon-purple)]" /><span className="font-medium">Admin Command Center</span></div>
           <div className="text-xs text-white/40">{user.username}</div>
         </div>
       </div>
@@ -55,7 +55,7 @@ function AdminPage() {
       <div className="mx-auto grid max-w-7xl gap-6 px-6 py-10 lg:grid-cols-3">
         {/* Broadcast */}
         <div className="glass rounded-2xl p-5 lg:col-span-1">
-          <div className="mb-4 flex items-center gap-2"><Megaphone className="h-5 w-5 text-[color:var(--neon-crimson)]" /><h2 className="font-semibold">Broadcast</h2></div>
+          <div className="mb-4 flex items-center gap-2"><Megaphone className="h-5 w-5 text-[color:var(--neon-purple)]" /><h2 className="font-semibold">Broadcast</h2></div>
           <textarea value={msg} onChange={(e) => setMsg(e.target.value)} placeholder="Announcement to all viewers…" rows={3}
             className="w-full rounded-xl border border-white/10 bg-white/5 p-3 text-sm outline-none focus:border-[color:var(--neon-blue)]" />
           <button onClick={() => { if (msg.trim()) { pushBroadcast(msg.trim()); setMsg(""); toast.success("Broadcast sent"); } }}

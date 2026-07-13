@@ -129,7 +129,7 @@ function AuthPage() {
 
         <div className="mb-6 grid grid-cols-2 gap-1 rounded-xl bg-white/5 p-1">
           {(["login", "signup"] as const).map((m) => (
-            <button key={m} onClick={() => setMode(m)} className={`rounded-lg py-2 text-sm font-medium transition ${mode === m ? "bg-gradient-to-r from-[#6ea8ff]/30 to-[#ff3b5c]/30 text-white shadow-[0_0_20px_rgba(110,168,255,0.3)]" : "text-white/60 hover:text-white"}`}>
+            <button key={m} onClick={() => setMode(m)} className={`rounded-lg py-2 text-sm font-medium transition ${mode === m ? "bg-gradient-to-r from-[#6ea8ff]/30 to-[#8b5cf6]/30 text-white shadow-[0_0_20px_rgba(110,168,255,0.3)]" : "text-white/60 hover:text-white"}`}>
               {m === "login" ? "Login" : "Sign up"}
             </button>
           ))}

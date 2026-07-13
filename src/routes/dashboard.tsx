@@ -106,7 +106,7 @@ function MatchCard({ match, onOpen }: { match: Match; onOpen: () => void }) {
                 <Tooltip contentStyle={{ background: "#121320", border: "1px solid #ffffff20", borderRadius: 8 }} />
                 <Bar dataKey="score" radius={[8, 8, 0, 0]}>
                   <Cell fill="#6ea8ff" />
-                  <Cell fill="#ff3b5c" />
+                  <Cell fill="#8b5cf6" />
                 </Bar>
               </BarChart>
             </ResponsiveContainer>
@@ -151,7 +151,7 @@ function buildDonut(m: Match): { title: string; data: { name: string; value: num
   if (m.sport === "cricket") return {
     title: "Wicket Split",
     data: [{ name: `${m.teamA} wkts`, value: s.wicketsA ?? 3 }, { name: `${m.teamB} wkts`, value: s.wicketsB ?? 5 }],
-    colors: ["#6ea8ff", "#ff3b5c"],
+    colors: ["#6ea8ff", "#8b5cf6"],
   };
   if (m.sport === "football") return {
     title: "Possession %",
@@ -166,7 +166,7 @@ function buildDonut(m: Match): { title: string; data: { name: string; value: num
   return {
     title: "Score Share",
     data: [{ name: m.teamA, value: Math.max(m.scoreA, 1) }, { name: m.teamB, value: Math.max(m.scoreB, 1) }],
-    colors: ["#6ea8ff", "#ff3b5c"],
+    colors: ["#6ea8ff", "#8b5cf6"],
   };
 }
 

@@ -75,7 +75,7 @@ function FilterGroup({ label, value, setValue, options }: { label: string; value
       <span className="px-3 text-xs uppercase tracking-widest text-white/40">{label}</span>
       {options.map((o) => (
         <button key={o.v} onClick={() => setValue(o.v)}
-          className={`rounded-full px-3 py-1.5 text-xs font-medium transition ${value === o.v ? "bg-gradient-to-r from-[#6ea8ff]/40 to-[#ff3b5c]/30 text-white shadow-[0_0_16px_rgba(110,168,255,0.3)]" : "text-white/60 hover:text-white"}`}>
+          className={`rounded-full px-3 py-1.5 text-xs font-medium transition ${value === o.v ? "bg-gradient-to-r from-[#6ea8ff]/40 to-[#8b5cf6]/30 text-white shadow-[0_0_16px_rgba(110,168,255,0.3)]" : "text-white/60 hover:text-white"}`}>
           {o.l}
         </button>
       ))}
@@ -85,7 +85,7 @@ function FilterGroup({ label, value, setValue, options }: { label: string; value
 
 export function StatusBadge({ status }: { status: Match["status"] }) {
   const map = {
-    live: "border-[color:var(--neon-crimson)]/50 bg-[color:var(--neon-crimson)]/10 text-[color:var(--neon-crimson)]",
+    live: "border-[color:var(--neon-rose)]/50 bg-[color:var(--neon-rose)]/10 text-[color:var(--neon-rose)]",
     upcoming: "border-[color:var(--neon-blue)]/50 bg-[color:var(--neon-blue)]/10 text-[color:var(--neon-blue)]",
     completed: "border-white/20 bg-white/5 text-white/60",
   } as const;

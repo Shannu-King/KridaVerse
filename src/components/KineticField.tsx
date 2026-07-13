@@ -42,7 +42,7 @@ export default function KineticField({ className = "" }: { className?: string })
       lane: Math.floor(Math.random() * LANES),
       z: Math.random(),
       speed: 0.08 + Math.random() * 0.18,
-      hue: Math.random() < 0.5 ? 210 : Math.random() < 0.5 ? 350 : 155,
+      hue: Math.random() < 0.5 ? 210 : Math.random() < 0.5 ? 280 : 155,
       len: 0.08 + Math.random() * 0.18,
     }));
 
@@ -68,7 +68,7 @@ export default function KineticField({ className = "" }: { className?: string })
       // aurora blobs
       const blobs = [
         { x: 0.2 + Math.sin(t * 0.003) * 0.1, y: 0.35, c: "rgba(110,168,255,0.22)" },
-        { x: 0.8 + Math.cos(t * 0.0025) * 0.08, y: 0.55, c: "rgba(255,59,92,0.18)" },
+        { x: 0.8 + Math.cos(t * 0.0025) * 0.08, y: 0.55, c: "rgba(139,92,246,0.12)" },
         { x: 0.5 + Math.sin(t * 0.004) * 0.15, y: 0.75, c: "rgba(60,220,160,0.16)" },
       ];
       for (const b of blobs) {
