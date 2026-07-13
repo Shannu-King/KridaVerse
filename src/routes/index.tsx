@@ -6,6 +6,7 @@ import { useEffect, useRef } from "react";
 import g1 from "@/assets/Ground1.jpg";
 import g2 from "@/assets/Ground2.jpg";
 import g3 from "@/assets/Ground3.jpg";
+import KineticField from "@/components/KineticField";
 
 export const Route = createFileRoute("/")({ component: Index });
 
@@ -31,13 +32,16 @@ function Index() {
     <div>
       {/* HERO */}
       <section className="relative flex min-h-[92vh] items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 block md:hidden">
+          <KineticField />
+        </div>
         <video
           ref={videoRef}
           autoPlay
           loop
           muted
           playsInline
-          className="absolute inset-0 h-full w-full object-cover opacity-75 hero-video"
+          className="absolute inset-0 h-full w-full object-cover opacity-75 hero-video hidden md:block"
           poster={g2}
         >
           <source src="/sports_video.mp4" type="video/mp4" />
