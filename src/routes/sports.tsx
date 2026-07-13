@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { SPORT_META, type Sport } from "@/lib/mockApi";
 import { ArrowRight } from "lucide-react";
 import { AnimatedBackground } from "@/components/AnimatedBackground";
+import { SportIcon } from "@/components/SportIcon";
 
 export const Route = createFileRoute("/sports")({ component: SportsPage });
 
@@ -25,7 +26,7 @@ function SportsPage() {
               <div className="absolute -right-16 -top-16 h-52 w-52 rounded-full opacity-20 blur-3xl transition group-hover:opacity-40"
                 style={{ background: meta.color }} />
               <div className="relative">
-                <div className="text-6xl">{meta.emoji}</div>
+                <SportIcon sport={id} className="h-16 w-16 mb-2" />
                 <h3 className="mt-4 text-2xl font-bold">{meta.label}</h3>
                 <p className="mt-1 text-sm text-white/60">Roster: {meta.min}–{meta.max} players</p>
                 <div className="mt-6 inline-flex items-center gap-2 text-sm font-semibold" style={{ color: meta.color }}>

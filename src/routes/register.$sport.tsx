@@ -3,6 +3,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ParticleCanvas } from "@/components/ParticleCanvas";
 import { SPORT_META, type Sport } from "@/lib/mockApi";
+import { SportIcon } from "@/components/SportIcon";
 import { X, Plus, ArrowLeft, Check } from "lucide-react";
 import { toast } from "sonner";
 
@@ -50,7 +51,7 @@ function RegisterSport() {
         </Link>
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="glass neon-border rounded-3xl p-8 md:p-10">
           <div className="mb-8 flex items-center gap-4">
-            <div className="text-5xl">{meta.emoji}</div>
+            <SportIcon sport={sport as Sport} className="h-14 w-14" />
             <div>
               <h1 className="text-3xl font-bold">{meta.label} Registration</h1>
               <p className="text-sm text-white/60">Roster required: {meta.min}–{meta.max} players</p>

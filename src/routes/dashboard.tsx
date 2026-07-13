@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import useEmblaCarousel from "embla-carousel-react";
 import { mockApi, SPORT_META, type Match } from "@/lib/mockApi";
+import { SportIcon } from "@/components/SportIcon";
 import { ChevronLeft, ChevronRight, MapPin, Radio, ArrowLeft, X } from "lucide-react";
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, Tooltip, PieChart, Pie, Cell, Legend } from "recharts";
 import { StatusBadge } from "./schedules";
@@ -75,7 +76,7 @@ function MatchCard({ match, onOpen }: { match: Match; onOpen: () => void }) {
     <motion.div layout className="glass neon-border rounded-3xl p-6">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <span className="text-2xl">{meta.emoji}</span>
+          <SportIcon sport={match.sport} className="h-8 w-8" />
           <div>
             <div className="text-sm font-semibold">{meta.label}</div>
             <div className="flex items-center gap-1.5 text-xs text-white/50"><MapPin className="h-3 w-3" /> {match.venue}</div>
@@ -180,7 +181,7 @@ function SummaryDrawer({ match, onClose }: { match: Match; onClose: () => void }
         className="fixed right-0 top-0 z-50 h-full w-full max-w-md overflow-y-auto border-l border-white/10 bg-[#0d0e15]/95 backdrop-blur-2xl">
         <div className="sticky top-0 flex items-center justify-between border-b border-white/10 bg-[#0d0e15]/90 p-5 backdrop-blur-xl">
           <div className="flex items-center gap-2">
-            <span className="text-2xl">{meta.emoji}</span>
+            <SportIcon sport={match.sport} className="h-8 w-8" />
             <div>
               <div className="font-semibold">Match Summary</div>
               <div className="text-xs text-white/50">{meta.label}</div>

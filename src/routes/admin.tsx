@@ -3,6 +3,7 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { mockApi, SPORT_META, type Match, type Sport } from "@/lib/mockApi";
+import { SportIcon } from "@/components/SportIcon";
 import { useApp } from "@/lib/store";
 import { toast } from "sonner";
 import { ArrowLeft, ShieldCheck, Plus, Trash2, Minus, Megaphone, X } from "lucide-react";
@@ -80,7 +81,7 @@ function AdminPage() {
           <div className="space-y-3">
             {data.map((m) => (
               <motion.div key={m.id} layout className="glass flex flex-wrap items-center gap-4 rounded-2xl p-4">
-                <div className="text-2xl">{SPORT_META[m.sport].emoji}</div>
+                <SportIcon sport={m.sport} className="h-8 w-8" />
                 <div className="min-w-0 flex-1">
                   <div className="truncate font-semibold">{m.teamA} vs {m.teamB}</div>
                   <div className="text-xs text-white/50">{SPORT_META[m.sport].label} · {m.venue}</div>

@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { mockApi, SPORT_META, type Match, type Sport } from "@/lib/mockApi";
+import { SportIcon } from "@/components/SportIcon";
 import { CalendarDays, MapPin, Clock } from "lucide-react";
 
 export const Route = createFileRoute("/schedules")({ component: SchedulesPage });
@@ -38,7 +39,7 @@ function SchedulesPage() {
               className="glass glass-hover rounded-2xl p-5">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2 text-sm">
-                  <span className="text-lg">{meta.emoji}</span>
+                  <SportIcon sport={m.sport} className="h-6 w-6" />
                   <span className="font-medium">{meta.label}</span>
                 </div>
                 <StatusBadge status={m.status} />
