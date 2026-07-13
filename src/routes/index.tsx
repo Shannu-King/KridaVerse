@@ -53,7 +53,7 @@ function Index() {
           </motion.div>
           <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }}
             className="text-5xl font-bold tracking-tight md:text-7xl lg:text-8xl">
-            <span className="neon-text">Kridaverse</span>
+            <span className="neon-text">KridaVerse</span>
           </motion.h1>
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.25 }}
             className="mx-auto mt-6 max-w-[650px] text-lg text-white/70 md:text-xl">

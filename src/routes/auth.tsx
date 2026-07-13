@@ -123,7 +123,7 @@ function AuthPage() {
       <motion.div initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5 }}
         className="glass neon-border relative w-full max-w-md rounded-3xl p-8">
         <div className="mb-6 text-center">
-          <h1 className="text-3xl font-bold neon-text">{mode === "login" ? "Welcome back" : "Join Kridaverse"}</h1>
+          <h1 className="text-3xl font-bold neon-text">{mode === "login" ? "Welcome back" : "Join KridaVerse"}</h1>
           <p className="mt-2 text-sm text-white/60">{mode === "login" ? "Sign in to continue" : "Create an account to register your team"}</p>
         </div>
 

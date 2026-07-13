@@ -34,7 +34,7 @@ function Header() {
           <div className="relative flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-[#6ea8ff] via-[#ff3b5c] to-[#35e6a4] shadow-[0_0_24px_rgba(110,168,255,0.5)]">
             <span className="text-xl font-bold text-black">K</span>
           </div>
-          <span className="text-2xl font-bold tracking-tight neon-text">Kridaverse</span>
+          <span className="text-2xl font-bold tracking-tight neon-text">KridaVerse</span>
         </Link>
         <nav className="hidden items-center gap-1 md:flex">
           {nav.map((n) => (
@@ -73,7 +73,7 @@ function Footer() {
     <footer className="mt-24 border-t border-white/5 bg-[#0a0b12]/60 backdrop-blur-xl">
       <div className="mx-auto grid max-w-7xl gap-8 px-6 py-12 md:grid-cols-4">
         <div>
-          <div className="mb-3 text-xl font-bold neon-text">Kridaverse</div>
+          <div className="mb-3 text-xl font-bold neon-text">KridaVerse</div>
           <p className="text-sm text-white/60">Premium tournament management and live tracking for collegiate sports.</p>
         </div>
         <div>
@@ -96,7 +96,7 @@ function Footer() {
           <p className="text-sm text-white/60">tarunturpudi@gmail.com</p>
         </div>
       </div>
-      <div className="border-t border-white/5 py-4 text-center text-xs text-white/40">© 2026 Kridaverse. All rights reserved.</div>
+      <div className="border-t border-white/5 py-4 text-center text-xs text-white/40">© 2026 KridaVerse. All rights reserved.</div>
     </footer>
   );
 }

@@ -77,14 +77,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Kridaverse — Live Tournament Command Center" },
-      { name: "description", content: "Kridaverse is a premium sports tournament management and live tracking platform for cricket, football, kabaddi and more." },
-      { name: "author", content: "Kridaverse" },
-      { property: "og:title", content: "Kridaverse — Live Tournament Command Center" },
+      { title: "KridaVerse — Live Tournament Command Center" },
+      { name: "description", content: "KridaVerse is a premium sports tournament management and live tracking platform for cricket, football, kabaddi and more." },
+      { name: "author", content: "KridaVerse" },
+      { property: "og:title", content: "KridaVerse — Live Tournament Command Center" },
       { property: "og:description", content: "Manage fixtures, register teams, and follow live scores in real time." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Kridaverse" },
+      { name: "twitter:site", content: "@KridaVerse" },
     ],
     links: [
       {
