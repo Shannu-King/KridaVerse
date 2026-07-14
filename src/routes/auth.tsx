@@ -99,10 +99,10 @@ function AuthPage() {
         if (stored) usersList = JSON.parse(stored);
       } catch {}
 
-      const exists = usersList.some(
+      const exists = Array.isArray(usersList) && usersList.some(
         (u: any) => 
-          u.username.toLowerCase() === f.username.trim().toLowerCase() || 
-          u.email.toLowerCase() === identifier.toLowerCase()
+          u?.username?.toLowerCase() === f.username.trim().toLowerCase() || 
+          u?.email?.toLowerCase() === identifier.toLowerCase()
       );
       if (exists) {
         return setErr("Username or Email already registered");
@@ -181,10 +181,10 @@ function AuthPage() {
           if (stored) usersList = JSON.parse(stored);
         } catch {}
 
-        const found = usersList.find(
+        const found = Array.isArray(usersList) && usersList.find(
           (u: any) => 
-            (u.email.toLowerCase() === identifier.toLowerCase() || u.username.toLowerCase() === identifier.toLowerCase()) && 
-            u.password === password
+            (u?.email?.toLowerCase() === identifier.toLowerCase() || u?.username?.toLowerCase() === identifier.toLowerCase()) && 
+            u?.password === password
         );
         if (found) {
           foundUser = found;

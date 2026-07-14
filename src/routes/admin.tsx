@@ -133,6 +133,18 @@ function AdminPage() {
   const [activeWorkspaceSport, setActiveWorkspaceSport] = useState<Sport>("cricket");
   const [fixtureGenType, setFixtureGenType] = useState<"round-robin" | "knockout">("round-robin");
   const [newTeamName, setNewTeamName] = useState("");
+  const [pendingRegistrations, setPendingRegistrations] = useState<any[]>([]);
+
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem("kv_registrations");
+      if (stored) {
+        setPendingRegistrations(JSON.parse(stored));
+      }
+    } catch (err) {
+      console.error("Load registrations error:", err);
+    }
+  }, []);
 
   // Create Tournament modal step states
   const [showTourneyModal, setShowTourneyModal] = useState(false);
@@ -618,6 +630,68 @@ function AdminPage() {
                             </button>
                           </div>
                         </div>
+
+                        {/* Pending Approvals lists card */}
+                        {pendingRegistrations.filter(r => r.sport === activeWorkspaceSport).length > 0 && (
+                          <div className="bg-black/25 border border-amber-500/10 rounded-2xl p-4.5">
+                            <div className="flex items-center justify-between border-b border-white/5 pb-2 mb-3.5">
+                              <h3 className="font-extrabold text-xs uppercase tracking-wider text-amber-400 flex items-center gap-1.5">
+                                <span className="animate-pulse">⏳</span>
+                                Pending Registrations ({pendingRegistrations.filter(r => r.sport === activeWorkspaceSport).length})
+                              </h3>
+                            </div>
+                            
+                            <div className="space-y-3 max-h-[200px] overflow-y-auto pr-1">
+                              {pendingRegistrations
+                                .filter(r => r.sport === activeWorkspaceSport)
+                                .map((reg) => (
+                                  <div key={reg.id} className="border border-white/5 bg-white/[0.02] p-3 rounded-xl flex flex-col md:flex-row md:items-center justify-between gap-3 text-xs">
+                                    <div className="text-left">
+                                      <div className="font-bold text-white">{reg.teamName}</div>
+                                      <div className="text-white/40 text-[10px] mt-0.5">
+                                        Branch: {reg.branch} · Year: {reg.year} · Roster: {reg.members?.length} players
+                                      </div>
+                                    </div>
+                                    <div className="flex gap-2">
+                                      <button
+                                        onClick={() => {
+                                          if (currentTourney.teams.includes(reg.teamName)) {
+                                            toast.error("Team name already in tournament!");
+                                            return;
+                                          }
+                                          const updatedTeams = [...currentTourney.teams, reg.teamName];
+                                          setTournaments(prev => prev.map(t => t.id === currentTourney.id ? { ...t, teams: updatedTeams } : t));
+                                          
+                                          const updatedRegs = pendingRegistrations.filter(r => r.id !== reg.id);
+                                          setPendingRegistrations(updatedRegs);
+                                          localStorage.setItem("kv_registrations", JSON.stringify(updatedRegs));
+                                          
+                                          pushActivity(`Approved team registration: ${reg.teamName}`);
+                                          toast.success(`${reg.teamName} approved and added to team pool!`);
+                                        }}
+                                        className="px-2.5 py-1.5 rounded-lg bg-emerald-500/20 border border-emerald-500/30 text-[10px] font-bold text-emerald-400 hover:bg-emerald-500/30 transition cursor-pointer"
+                                      >
+                                        Approve
+                                      </button>
+                                      <button
+                                        onClick={() => {
+                                          const updatedRegs = pendingRegistrations.filter(r => r.id !== reg.id);
+                                          setPendingRegistrations(updatedRegs);
+                                          localStorage.setItem("kv_registrations", JSON.stringify(updatedRegs));
+                                          
+                                          pushActivity(`Rejected team registration: ${reg.teamName}`);
+                                          toast.error(`${reg.teamName} registration rejected`);
+                                        }}
+                                        className="px-2.5 py-1.5 rounded-lg bg-red-500/20 border border-red-500/30 text-[10px] font-bold text-red-400 hover:bg-red-500/30 transition cursor-pointer"
+                                      >
+                                        Reject
+                                      </button>
+                                    </div>
+                                  </div>
+                                ))}
+                            </div>
+                          </div>
+                        )}
 
                         {/* Fixtures automation generator widget */}
                         <div className="bg-black/25 border border-white/5 rounded-2xl p-4.5">

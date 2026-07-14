@@ -159,12 +159,42 @@ function SportsPage() {
   const handleRegisterSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!selectedSport || !activeMeta) return;
-    if (!isFormValid) {
-      toast.error(`Roster must have between ${activeMeta.min} and ${activeMeta.max} players.`);
+
+    // Explicit Validation Check with informative toast feedback
+    if (!teamName.trim()) {
+      toast.error("Please enter a Team Name.");
+      return;
+    }
+    if (members.length < activeMeta.min) {
+      toast.error(`Roster is too small. Please add at least ${activeMeta.min - members.length} more players for ${activeMeta.label}.`);
+      return;
+    }
+    if (members.length > activeMeta.max) {
+      toast.error(`Roster is too large. A maximum of ${activeMeta.max} players is allowed for ${activeMeta.label}.`);
       return;
     }
 
     setLoading(true);
+    
+    // Persist registration to localStorage for mock/admin demo flow
+    const newReg = {
+      id: crypto.randomUUID(),
+      sport: selectedSport,
+      teamName: teamName.trim(),
+      branch,
+      year: parseInt(year),
+      members,
+      registeredAt: Date.now()
+    };
+    try {
+      const stored = localStorage.getItem("kv_registrations");
+      const list = stored ? JSON.parse(stored) : [];
+      list.push(newReg);
+      localStorage.setItem("kv_registrations", JSON.stringify(list));
+    } catch (err) {
+      console.error("Save registration error:", err);
+    }
+
     await new Promise((resolve) => setTimeout(resolve, 1500));
     setLoading(false);
     setSuccess(true);
@@ -236,7 +266,7 @@ function SportsPage() {
                 key={id} 
                 onClick={() => {
                   setSelectedSport(id);
-                  setErr("");
+                  setModalOpen(true);
                 }}
                 initial={{ opacity: 0, scale: 0.96, y: 15 }} 
                 animate={{ opacity: 1, scale: 1, y: 0 }} 
@@ -466,7 +496,20 @@ function SportsPage() {
                   {/* Roster builder lists */}
                   <div>
                     <div className="mb-1.5 flex items-center justify-between">
-                      <label className="text-[10px] uppercase tracking-wider font-semibold text-white/40">Roster</label>
+                      <div className="flex items-center gap-2">
+                        <label className="text-[10px] uppercase tracking-wider font-semibold text-white/40">Roster</label>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            const demoPlayers = Array.from({ length: activeMeta.min }, (_, i) => `Athlete ${i + 1}`);
+                            setMembers(demoPlayers);
+                            toast.success("Demo roster pre-filled!");
+                          }}
+                          className="text-[9px] uppercase tracking-wider px-2 py-0.5 rounded border border-[#6ea8ff]/30 bg-[#6ea8ff]/10 text-[#6ea8ff] hover:bg-[#6ea8ff]/25 transition cursor-pointer"
+                        >
+                          Quick Fill
+                        </button>
+                      </div>
                       <span className={`text-[10px] font-bold ${members.length < activeMeta.min ? "text-amber-400 animate-pulse" : "text-[color:var(--neon-emerald)]"}`}>
                         {members.length} / {activeMeta.min}–{activeMeta.max} Players
                       </span>
@@ -539,11 +582,11 @@ function SportsPage() {
                     </button>
                     <button 
                       type="submit" 
-                      disabled={loading || !isFormValid}
-                      className={`flex-[2] h-12 rounded-xl text-sm font-bold text-white flex items-center justify-center cursor-pointer ${
+                      disabled={loading}
+                      className={`flex-[2] h-12 rounded-xl text-sm font-bold text-white flex items-center justify-center cursor-pointer transition-all ${
                         isFormValid 
-                          ? "bg-gradient-to-r from-[#6ea8ff] to-[#8b5cf6] border border-[#6ea8ff]/30 shadow-[0_4px_20px_rgba(110,168,255,0.25)] hover:shadow-[0_8px_30px_rgba(110,168,255,0.4)] hover:brightness-110 active:scale-95 transition-all" 
-                          : "border border-white/10 bg-white/5 text-white/30 cursor-not-allowed pointer-events-none"
+                          ? "bg-gradient-to-r from-[#6ea8ff] to-[#8b5cf6] border border-[#6ea8ff]/30 shadow-[0_4px_20px_rgba(110,168,255,0.25)] hover:shadow-[0_8px_30px_rgba(110,168,255,0.4)] hover:brightness-110 active:scale-95" 
+                          : "border border-white/10 bg-white/5 text-white/30"
                       }`}
                     >
                       {loading ? (
